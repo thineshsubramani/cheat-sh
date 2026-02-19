@@ -1,130 +1,147 @@
-### 1 Packages
+### 1 Program Entry
 
-- Initialize module: `go mod init example.com/project`
-- Add dependency: `go get github.com/some/pkg`
+- Main: `package main; func main() {}`
+- Import: `import "fmt"` or `import ( "fmt"; "os" )`
 
-### 2 Concurrency
+### 2 Variables
 
-- Goroutine: `go func() { /* ... */ }()`
-- Channel example:
+- Decl: `var x int` or `var x int = 10`
+- Short: `x := 10` (inside func)
+- Const: `const Pi = 3.14`
+- Types: `bool`, `string`, `int`, `float64`, `byte`, `rune`
 
-```
-ch := make(chan int)
-go func(){ ch <- 1 }()
-x := <-ch
-```
+### 3 Functions
 
-### 3 Loops
+- Define: `func add(a, b int) int { return a+b }`
+- Multiple return: `func swap(a, b int) (int, int)`
+- Named return: `func split(sum int) (x, y int)`
 
-- `for i := 0; i < 10; i++ { fmt.Println(i) }`
-- Range loop over slice/map:
+### 4 Conditions
 
-```
-for i, v := range items {
-    fmt.Println(i, v)
-}
-```
+- If: `if x > 0 { ... } else { ... }`
+- Short stmt: `if v := math.Pow(x, n); v < lim { ... }`
+- Switch: `switch os { case "mac": ... default: ... }`
 
-### 4 Slices
+### 5 Loops
 
-- Make: `s := make([]int, 0, 10)`
+- For: `for i := 0; i < 10; i++ { ... }`
+- While-like: `for sum < 1000 { ... }`
+- Range: `for i, v := range arr { ... }`
+
+### 6 Arrays & Slices
+
+- Array: `var a [10]int` (fixed size)
+- Slice: `s := []int{1, 2, 3}`
+- Make: `s := make([]int, len, cap)`
 - Append: `s = append(s, 1)`
+- Sub-slice: `s[1:4]`
 
-### 5 Interfaces
+### 7 Strings
 
-- Define: `type Reader interface { Read(p []byte) (n int, err error) }`
+- Import: `import "strings"`
+- Len: `len(s)` (bytes), `utf8.RuneCountInString(s)`
+- Split: `strings.Split(s, "")`
+- Join: `strings.Join(arr, "")`
+- Contains: `strings.Contains(s, sub)`
+- Builder: `var sb strings.Builder; sb.WriteString(s)`
 
-### 6 Error handling
+### 8 Conversions
 
-- Idiomatic check: `if err != nil { return err }`
+- Import: `import "strconv"`
+- Str->Int: `i, _ := strconv.Atoi("123")`
+- Int->Str: `s := strconv.Itoa(123)`
+- Str->[]byte: `[]byte("abc")`
+- []byte->Str: `string([]byte{97})`
+- Str->[]rune: `[]rune("abc")`
+- Int->Float: `float64(i)`
 
-### 7 Maps
+### 9 Maps
 
 - Init: `m := make(map[string]int)`
 - Set/Get: `m["k"] = 1`; `v := m["k"]`
-- Check exists: `v, ok := m["k"]`
+- Check: `v, ok := m["k"]`
 - Delete: `delete(m, "k")`
 
-### 8 Structs
+### 10 Structs
 
-- Define: `type User struct { Name string; Age int }`
-- Init: `u := User{Name: "Bob", Age: 20}`
+- Define: `type Point struct { X, Y int }`
+- Init: `p := Point{1, 2}` or `p := Point{X: 1}`
+- Pointer: `p := &Point{1, 2}`
 
-### 9 JSON
+### 11 Linked List
 
-- Import: `import "encoding/json"`
-- Marshal: `b, err := json.Marshal(v)`
-- Unmarshal: `err := json.Unmarshal(b, &v)`
+- Define: `type Node struct { Val int; Next *Node }`
+- Init: `head := &Node{Val: 1}`
+- Traverse: `for curr := head; curr != nil; curr = curr.Next {}`
 
-### 10 Testing
+### 12 Interfaces
 
-- File: `*_test.go`
-- Func: `func TestName(t *testing.T)`
-- Run: `go test ./...`
+- Define: `type Abser interface { Abs() float64 }`
+- Implement: Implicit, just define method
+- Type assertion: `v, ok := i.(T)`
 
-### 11 Time
+### 13 Error Handling
 
-- Now: `t := time.Now()`
-- Format: `t.Format(time.RFC3339)`
-- Parse: `t, _ := time.Parse(layout, str)`
-
-### 12 Strings
-
-- Import: `import "strings"`
-- Split: `parts := strings.Split(s, sep)`
-- Join: `str := strings.Join(arr, sep)`
-- Contains: `strings.Contains(s, substr)`
-- Replace: `strings.ReplaceAll(s, old, new)`
-- Trim: `strings.TrimSpace(s)`
-
-### 13 Conversions
-
-- Import: `import "strconv"`
-- Str -> Int: `i, _ := strconv.Atoi("123")`
-- Int -> Str: `s := strconv.Itoa(123)`
-- Str -> []byte: `b := []byte(s)`
-- []byte -> Str: `s := string(b)`
-- Str -> []rune: `r := []rune(s)` (mutable chars)
+- Define: `type error interface { Error() string }`
+- Check: `if err != nil { return err }`
+- New: `errors.New("msg")`
 
 ### 14 Sorting & Math
 
-- Import: `import ("sort"; "math")`
-- Sort Ints: `sort.Ints(nums)`
-- Sort Strings: `sort.Strings(strs)`
+- Sort: `sort.Ints(s)`, `sort.Strings(s)`
 - Custom: `sort.Slice(s, func(i, j int) bool { return s[i] < s[j] })`
-- Math: `math.Max(f1, f2)`, `math.Abs(f)`
+- Math: `math.Max(x, y)`, `math.Abs(x)`
+- MaxInt: `math.MaxInt64`
 
-### 15 File I/O
+### 15 Bitwise
 
-- Import: `import "os"`
-- Read all: `b, err := os.ReadFile("file.txt")`
-- Write all: `err := os.WriteFile("file.txt", []byte("data"), 0644)`
-- Open: `f, err := os.Open("file.txt"); defer f.Close()`
+- Ops: `&`, `|`, `^` (XOR), `&^` (clear), `<<`, `>>`
 
-### 16 HTTP
+### 16 JSON
 
-- Import: `import ("net/http"; "io")`
-- Get: `resp, err := http.Get("http://example.com")`
-- Body: `defer resp.Body.Close(); b, _ := io.ReadAll(resp.Body)`
-- Server: `http.ListenAndServe(":8080", handler)`
+- Marshal: `json.Marshal(v)`
+- Unmarshal: `json.Unmarshal(data, &v)`
+- Tags: `json:"name"`
 
-### 17 Context
+### 17 Time
 
-- Import: `import "context"`
-- Base: `ctx := context.Background()`
-- Timeout: `ctx, cancel := context.WithTimeout(ctx, 5*time.Second); defer cancel()`
-- Check: `select { case <-ctx.Done(): return }`
+- Now: `time.Now()`
+- Format: `t.Format("2006-01-02")`
+- Diff: `t2.Sub(t1)`
 
-### 18 Regex
+### 18 File I/O
 
-- Import: `import "regexp"`
-- Compile: `re := regexp.MustCompile(\`[a-z]+\`)`
-- Match: `matched := re.MatchString("foo")`
-- Find: `s := re.FindString("foo123")`
+- Read: `os.ReadFile("file")`
+- Write: `os.WriteFile("file", data, 0644)`
 
-### 19 Bitwise
+### 19 HTTP
 
-- AND: `x & y`  OR: `x | y`  XOR: `x ^ y`
-- NOT: `^x`
-- Shift: `x << 1` (left), `x >> 1` (right)
-- Clear: `x &^ y` (bit clear)
+- Get: `http.Get(url)`
+- Server: `http.ListenAndServe(":8080", nil)`
+
+### 20 Context
+
+- Background: `context.Background()`
+- Timeout: `context.WithTimeout(ctx, time.Second)`
+
+### 21 Regex
+
+- Compile: `regexp.MustCompile(pattern)`
+- Match: `re.MatchString(s)`
+
+### 22 Testing
+
+- Func: `func TestX(t *testing.T)`
+- Run: `go test -v`
+
+### 23 Concurrency
+
+- Go: `go func() {}()`
+- Chan: `ch := make(chan int)`
+- Send/Recv: `ch <- v`, `v := <-ch`
+- WaitGroup: `var wg sync.WaitGroup; wg.Add(1); wg.Done(); wg.Wait()`
+
+### 24 Modules
+
+- Init: `go mod init name`
+- Tidy: `go mod tidy`
