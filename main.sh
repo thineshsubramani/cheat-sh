@@ -221,7 +221,7 @@ draw() {
   done
 
   printf "${ESC}[1;34m└"; repeat_char "─" $((box_w-2)); printf "┘${ESC}[0m\n"
-  printf "${ESC}[2mZoom:%sx  Col %d-%d of %d${ESC}[0m\n" "$zoom_level" "$((start_col+1))" "$((start_col+visible_cols))" "$TOTAL_COLS_COUNT"
+  printf "${ESC}[2mZoom:%sx  Col %d-%d of %d${ESC}[0m" "$zoom_level" "$((start_col+1))" "$((start_col+visible_cols))" "$TOTAL_COLS_COUNT"
 }
 
 ####################
@@ -275,7 +275,7 @@ while true; do
     content_h=$((lines - 3))
     if (( content_h < 1 )); then content_h=1; fi
 
-    layout_items $content_h $final_col_w
+    layout_items $content_h $final_col_w $visible_cols
 
     if (( start_col < 0 )); then start_col=0; fi
     if (( start_col >= TOTAL_COLS_COUNT )); then 
