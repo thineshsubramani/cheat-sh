@@ -13,9 +13,9 @@ DATA_DIR="$(dirname "$0")/data"
 # Examples:
 # CONFIG=("linux 2,3,4" "go 3,5,6" "rust all")
 CONFIG=(
+  "rust all"
   "linux all"
   "go all"
-  "rust all"
 )
 
 # Visual Options
