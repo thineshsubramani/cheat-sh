@@ -32,7 +32,8 @@
 ### 6 Loops
 
 - For: `for i := 0; i < 10; i++ { ... }`
-- While-like: `for sum < 1000 { ... }`
+- While: `for i < 1000 { ... }`
+- Infinite: `for { ... }`
 - Range: `for i, v := range arr { ... }`
 
 ### 7 Arrays & Slices
@@ -52,22 +53,26 @@
 - Contains: `strings.Contains(s, sub)`
 - Builder: `var sb strings.Builder; sb.WriteString(s)`
 
-### 9 Conversions
-
-- Import: `import "strconv"`
-- Str->Int: `i, _ := strconv.Atoi("123")`
-- Int->Str: `s := strconv.Itoa(123)`
-- Str->[]byte: `[]byte("abc")`
-- []byte->Str: `string([]byte{97})`
-- Str->[]rune: `[]rune("abc")`
-- Int->Float: `float64(i)`
-
-### 10 Maps
+### 9 Maps
 
 - Init: `m := make(map[string]int)`
 - Set/Get: `m["k"] = 1`; `v := m["k"]`
 - Check: `v, ok := m["k"]`
 - Delete: `delete(m, "k")`
+
+### 10 String Conversions
+
+- Import: `import "strconv"`
+- Str->Int: `i, _ := strconv.Atoi("123")`
+- Int->Str: `s := strconv.Itoa(123)`
+- Str->Bytes: `b := []byte(s)`
+- Bytes->Str: `s := string(b)`
+- Str->Runes: `r := []rune(s)`
+- Runes->Str: `s := string(r)`
+- Runes->Char: `fmt.Printf("%c", r)`
+- Char->Rune: `r := 'a'`
+- Str->Slice: `strs := strings.Split(s, "")`
+- Slice->Str: `s := strings.Join(strs, "")`
 
 ### 11 Structs
 
