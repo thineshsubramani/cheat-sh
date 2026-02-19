@@ -10,25 +10,32 @@
 - Const: `const Pi = 3.14`
 - Types: `bool`, `string`, `int`, `float64`, `byte`, `rune`
 
-### 3 Functions
+### 3 Pointers
+
+- Decl: `var p *int`
+- Address: `p := &i`
+- Deref: `*p = 21`
+- New: `p := new(int)`
+
+### 4 Functions
 
 - Define: `func add(a, b int) int { return a+b }`
 - Multiple return: `func swap(a, b int) (int, int)`
 - Named return: `func split(sum int) (x, y int)`
 
-### 4 Conditions
+### 5 Conditions
 
 - If: `if x > 0 { ... } else { ... }`
 - Short stmt: `if v := math.Pow(x, n); v < lim { ... }`
 - Switch: `switch os { case "mac": ... default: ... }`
 
-### 5 Loops
+### 6 Loops
 
 - For: `for i := 0; i < 10; i++ { ... }`
 - While-like: `for sum < 1000 { ... }`
 - Range: `for i, v := range arr { ... }`
 
-### 6 Arrays & Slices
+### 7 Arrays & Slices
 
 - Array: `var a [10]int` (fixed size)
 - Slice: `s := []int{1, 2, 3}`
@@ -36,7 +43,7 @@
 - Append: `s = append(s, 1)`
 - Sub-slice: `s[1:4]`
 
-### 7 Strings
+### 8 Strings
 
 - Import: `import "strings"`
 - Len: `len(s)` (bytes), `utf8.RuneCountInString(s)`
@@ -45,7 +52,7 @@
 - Contains: `strings.Contains(s, sub)`
 - Builder: `var sb strings.Builder; sb.WriteString(s)`
 
-### 8 Conversions
+### 9 Conversions
 
 - Import: `import "strconv"`
 - Str->Int: `i, _ := strconv.Atoi("123")`
@@ -55,93 +62,93 @@
 - Str->[]rune: `[]rune("abc")`
 - Int->Float: `float64(i)`
 
-### 9 Maps
+### 10 Maps
 
 - Init: `m := make(map[string]int)`
 - Set/Get: `m["k"] = 1`; `v := m["k"]`
 - Check: `v, ok := m["k"]`
 - Delete: `delete(m, "k")`
 
-### 10 Structs
+### 11 Structs
 
 - Define: `type Point struct { X, Y int }`
 - Init: `p := Point{1, 2}` or `p := Point{X: 1}`
 - Pointer: `p := &Point{1, 2}`
 
-### 11 Linked List
+### 12 Linked List
 
 - Define: `type Node struct { Val int; Next *Node }`
 - Init: `head := &Node{Val: 1}`
 - Traverse: `for curr := head; curr != nil; curr = curr.Next {}`
 
-### 12 Interfaces
+### 13 Interfaces
 
 - Define: `type Abser interface { Abs() float64 }`
 - Implement: Implicit, just define method
 - Type assertion: `v, ok := i.(T)`
 
-### 13 Error Handling
+### 14 Error Handling
 
 - Define: `type error interface { Error() string }`
 - Check: `if err != nil { return err }`
 - New: `errors.New("msg")`
 
-### 14 Sorting & Math
+### 15 Sorting & Math
 
 - Sort: `sort.Ints(s)`, `sort.Strings(s)`
 - Custom: `sort.Slice(s, func(i, j int) bool { return s[i] < s[j] })`
 - Math: `math.Max(x, y)`, `math.Abs(x)`
 - MaxInt: `math.MaxInt64`
 
-### 15 Bitwise
+### 16 Bitwise
 
 - Ops: `&`, `|`, `^` (XOR), `&^` (clear), `<<`, `>>`
 
-### 16 JSON
+### 17 JSON
 
 - Marshal: `json.Marshal(v)`
 - Unmarshal: `json.Unmarshal(data, &v)`
 - Tags: `json:"name"`
 
-### 17 Time
+### 18 Time
 
 - Now: `time.Now()`
 - Format: `t.Format("2006-01-02")`
 - Diff: `t2.Sub(t1)`
 
-### 18 File I/O
+### 19 File I/O
 
 - Read: `os.ReadFile("file")`
 - Write: `os.WriteFile("file", data, 0644)`
 
-### 19 HTTP
+### 20 HTTP
 
 - Get: `http.Get(url)`
 - Server: `http.ListenAndServe(":8080", nil)`
 
-### 20 Context
+### 21 Context
 
 - Background: `context.Background()`
 - Timeout: `context.WithTimeout(ctx, time.Second)`
 
-### 21 Regex
+### 22 Regex
 
 - Compile: `regexp.MustCompile(pattern)`
 - Match: `re.MatchString(s)`
 
-### 22 Testing
+### 23 Testing
 
 - Func: `func TestX(t *testing.T)`
 - Run: `go test -v`
 
-### 23 Concurrency
+### 24 Concurrency
 
 - Go: `go func() {}()`
 - Chan: `ch := make(chan int)`
 - Send/Recv: `ch <- v`, `v := <-ch`
 - WaitGroup: `var wg sync.WaitGroup; wg.Add(1); wg.Done(); wg.Wait()`
 
-### 24 Modules
+### 25 Modules
 
 - Init: `go mod init name`
 - Tidy: `go mod tidy`
