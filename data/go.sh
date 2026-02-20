@@ -26,6 +26,7 @@
 ### 5 Conditions
 
 - If: `if x > 0 { ... } else { ... }`
+- Else If: `if x > 0 { ... } else if x < 0 { ... } else { ... }`
 - Short stmt: `if v := math.Pow(x, n); v < lim { ... }`
 - Switch: `switch os { case "mac": ... default: ... }`
 
@@ -86,74 +87,86 @@
 - Init: `head := &Node{Val: 1}`
 - Traverse: `for curr := head; curr != nil; curr = curr.Next {}`
 
-### 13 Interfaces
+### 13 Stack
+
+- Slice: `var s []int; s = append(s, 1); top := s[len(s)-1]; s = s[:len(s)-1]`
+- List: `type Stack struct { top *Node }; func (s *Stack) Push(v int) { s.top = &Node{Val: v, Next: s.top} }`
+- Pop: `func (s *Stack) Pop() int { v := s.top.Val; s.top = s.top.Next; return v }`
+
+### 14 Queue
+
+- Slice: `var q []int; q = append(q, 1); front := q[0]; q = q[1:]`
+- List: `type Queue struct { head, tail *Node }; func (q *Queue) Enq(v int) { n := &Node{Val: v}; if q.tail != nil { q.tail.Next = n } else { q.head = n }; q.tail = n }`
+- Deq: `func (q *Queue) Deq() int { v := q.head.Val; q.head = q.head.Next; if q.head == nil { q.tail = nil }; return v }`
+
+### 15 Interfaces
 
 - Define: `type Abser interface { Abs() float64 }`
 - Implement: Implicit, just define method
 - Type assertion: `v, ok := i.(T)`
 
-### 14 Error Handling
+### 16 Error Handling
 
 - Define: `type error interface { Error() string }`
 - Check: `if err != nil { return err }`
 - New: `errors.New("msg")`
 
-### 15 Sorting & Math
+### 17 Sorting & Math
 
 - Sort: `sort.Ints(s)`, `sort.Strings(s)`
 - Custom: `sort.Slice(s, func(i, j int) bool { return s[i] < s[j] })`
 - Math: `math.Max(x, y)`, `math.Abs(x)`
 - MaxInt: `math.MaxInt64`
 
-### 16 Bitwise
+### 18 Bitwise
 
 - Ops: `&`, `|`, `^` (XOR), `&^` (clear), `<<`, `>>`
 
-### 17 JSON
+### 19 JSON
 
 - Marshal: `json.Marshal(v)`
 - Unmarshal: `json.Unmarshal(data, &v)`
 - Tags: `json:"name"`
 
-### 18 Time
+### 20 Time
 
 - Now: `time.Now()`
 - Format: `t.Format("2006-01-02")`
 - Diff: `t2.Sub(t1)`
 
-### 19 File I/O
+### 21 File I/O
 
 - Read: `os.ReadFile("file")`
 - Write: `os.WriteFile("file", data, 0644)`
 
-### 20 HTTP
+### 22 HTTP
 
 - Get: `http.Get(url)`
 - Server: `http.ListenAndServe(":8080", nil)`
 
-### 21 Context
+### 23 Context
 
 - Background: `context.Background()`
 - Timeout: `context.WithTimeout(ctx, time.Second)`
 
-### 22 Regex
+### 24 Regex
 
 - Compile: `regexp.MustCompile(pattern)`
 - Match: `re.MatchString(s)`
 
-### 23 Testing
+### 25 Testing
 
 - Func: `func TestX(t *testing.T)`
 - Run: `go test -v`
 
-### 24 Concurrency
+### 26 Concurrency
 
 - Go: `go func() {}()`
 - Chan: `ch := make(chan int)`
 - Send/Recv: `ch <- v`, `v := <-ch`
 - WaitGroup: `var wg sync.WaitGroup; wg.Add(1); wg.Done(); wg.Wait()`
 
-### 25 Modules
+### 27 Modules
 
 - Init: `go mod init name`
 - Tidy: `go mod tidy`
