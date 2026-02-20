@@ -89,15 +89,21 @@
 
 ### 13 Stack
 
-- Slice: `var s []int; s = append(s, 1); top := s[len(s)-1]; s = s[:len(s)-1]`
-- List: `type Stack struct { top *Node }; func (s *Stack) Push(v int) { s.top = &Node{Val: v, Next: s.top} }`
-- Pop: `func (s *Stack) Pop() int { v := s.top.Val; s.top = s.top.Next; return v }`
+- Slice Init: `var s []int`
+- Slice Push: `s = append(s, v)`
+- Slice Pop: `top := s[len(s)-1]; s = s[:len(s)-1]`
+- List Def: `type Stack struct { top *Node }`
+- List Push: `func (s *Stack) Push(v int) { s.top = &Node{Val: v, Next: s.top} }`
+- List Pop: `func (s *Stack) Pop() int { v := s.top.Val; s.top = s.top.Next; return v }`
 
 ### 14 Queue
 
-- Slice: `var q []int; q = append(q, 1); front := q[0]; q = q[1:]`
-- List: `type Queue struct { head, tail *Node }; func (q *Queue) Enq(v int) { n := &Node{Val: v}; if q.tail != nil { q.tail.Next = n } else { q.head = n }; q.tail = n }`
-- Deq: `func (q *Queue) Deq() int { v := q.head.Val; q.head = q.head.Next; if q.head == nil { q.tail = nil }; return v }`
+- Slice Init: `var q []int`
+- Slice Enq: `q = append(q, v)`
+- Slice Deq: `front := q[0]; q = q[1:]`
+- List Def: `type Queue struct { head, tail *Node }`
+- List Enq: `func (q *Queue) Enq(v int) { n := &Node{Val: v}; if q.tail != nil { q.tail.Next = n } else { q.head = n }; q.tail = n }`
+- List Deq: `func (q *Queue) Deq() int { v := q.head.Val; q.head = q.head.Next; if q.head == nil { q.tail = nil }; return v }`
 
 ### 15 Interfaces
 

@@ -52,12 +52,14 @@
 
 ### 9 Stack
 - Include: `#include <stack>`
-- Array (Vec): `std::vector<int> s; s.push_back(1); s.pop_back();`
+- Array (Vec): `std::vector<int> s;`
+- Vec Ops: `s.push_back(1); s.pop_back();`
 - Adapter: `std::stack<int> s; s.push(1); s.pop();`
 
 ### 10 Queue
 - Include: `#include <queue>`
-- Array (Deque): `std::deque<int> q; q.push_back(1); q.pop_front();`
+- Array (Deque): `std::deque<int> q;`
+- Deque Ops: `q.push_back(1); q.pop_front();`
 - Adapter: `std::queue<int> q; q.push(1); q.pop();`
 
 ### 11 File I/O

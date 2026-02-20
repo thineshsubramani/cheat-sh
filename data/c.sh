@@ -81,14 +81,20 @@
 - Traverse: `struct Node* temp = head; while(temp != NULL) { temp = temp->next; }`
 
 ### 13 Stack
-- Array: `int s[10], top=-1; void push(int x){ s[++top]=x; } int pop(){ return s[top--]; }`
-- List: `struct Node { int data; struct Node* next; } *top=NULL;`
-- Ops: `push: n->next=top; top=n; pop: t=top; top=top->next; free(t);`
+- Array Init: `int s[10], top=-1;`
+- Array Push: `void push(int x){ s[++top]=x; }`
+- Array Pop: `int pop(){ return s[top--]; }`
+- List Def: `struct Node { int data; struct Node* next; } *top=NULL;`
+- List Push: `n->next=top; top=n;`
+- List Pop: `t=top; top=top->next; free(t);`
 
 ### 14 Queue
-- Array: `int q[10], f=0, r=-1; void enq(int x){ q[++r]=x; } int deq(){ return q[f++]; }`
-- List: `struct Node *f=NULL, *r=NULL;`
-- Ops: `enq: if(r) r->next=n; else f=n; r=n; deq: t=f; f=f->next; if(!f) r=NULL; free(t);`
+- Array Init: `int q[10], f=0, r=-1;`
+- Array Enq: `void enq(int x){ q[++r]=x; }`
+- Array Deq: `int deq(){ return q[f++]; }`
+- List Def: `struct Node *f=NULL, *r=NULL;`
+- List Enq: `if(r) r->next=n; else f=n; r=n;`
+- List Deq: `t=f; f=f->next; if(!f) r=NULL; free(t);`
 
 ### 15 File I/O
 - File Ptr: `FILE *fp;`

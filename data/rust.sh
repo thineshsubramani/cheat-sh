@@ -84,12 +84,16 @@
 - Iter: `for val in list.iter() { ... }`
 
 ### 14 Stack
-- Vec (Array): `let mut s = Vec::new(); s.push(1); s.pop();`
-- LinkedList: `let mut s = LinkedList::new(); s.push_front(1); s.pop_front();`
+- Vec (Array): `let mut s = Vec::new();`
+- Vec Ops: `s.push(1); s.pop();`
+- LinkedList: `let mut s = LinkedList::new();`
+- List Ops: `s.push_front(1); s.pop_front();`
 
 ### 15 Queue
-- VecDeque (Array): `use std::collections::VecDeque; let mut q = VecDeque::new(); q.push_back(1); q.pop_front();`
-- LinkedList: `let mut q = LinkedList::new(); q.push_back(1); q.pop_front();`
+- VecDeque: `use std::collections::VecDeque;`
+- VecDeque Ops: `let mut q = VecDeque::new(); q.push_back(1); q.pop_front();`
+- LinkedList: `let mut q = LinkedList::new();`
+- List Ops: `q.push_back(1); q.pop_front();`
 
 ### 16 Error Handling
 - Panic: `panic!("crash and burn");`
